@@ -15,7 +15,7 @@ The source code is available in the repository [surfsnippets](https://dexity@bit
 
 The layout in Android applications is described in .xml file, `main.xml` and includes TableLayout with two TableRow. The upper TableRow displays two tiles of ImageView and the bottom TableRow keeps left and right buttons:
 
-{% highlight java %}
+{% highlight java linenos %}
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_width="fill_parent"
@@ -55,7 +55,7 @@ Layout specifies some important parameters such as widget id: `@android:id="+id/
 
 The program is consists of just one `Shamu.java`:
 
-{% highlight java %}
+{% highlight java linenos %}
 package com.surfingbits.shamu;
 
 import java.util.HashMap;
@@ -163,7 +163,7 @@ setContentView(R.layout.main);
 
 initializes attributes and and then creates button widget specified by id `R.id.button_left` and defines the `OnClickListener()`:
 
-{% highlight java %}
+{% highlight java linenos %}
 Button btnLeft = (Button) findViewById(R.id.button_left);  // Left button
 btnLeft.setOnClickListener(new Button.OnClickListener() {
     public void onClick(View v) {
@@ -174,7 +174,7 @@ btnLeft.setOnClickListener(new Button.OnClickListener() {
 
 When the user clicks the button `replaceImage()` method will be called:
 
-{% highlight java %}
+{% highlight java linenos %}
 public void replaceImage(String side)
 {
    ImageView pic    = (ImageView) findViewById(layoutId("picture", R.id.class, side));

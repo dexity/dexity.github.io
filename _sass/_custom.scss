@@ -9,3 +9,20 @@
 .highlight pre {
   max-height: 400px;
 }
+
+.lineno {
+  text-align: right;
+  padding-right: 0.6em;
+  display:inline-block;
+  border-right: solid 1px #e4e4e4 !important;
+  color: #afafaf;
+}
+
+.post-content h2 {
+  font-size: 1.5em;
+}
+
+.post-content h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
