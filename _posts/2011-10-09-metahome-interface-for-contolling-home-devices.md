@@ -514,11 +514,3 @@ public class MapView extends View {
 ## Real Example
 
 To show the possible application of the idea I present here the map of the Terminal 4 at Los Angeles International Airport (LAX). It looks a bit more complicated than what I showed you before :) .
-
-{% highlight java linenos %}
-
-{% endhighlight %}
-
-{% highlight java linenos %}
-
-{% endhighlight %}
