@@ -6,10 +6,14 @@
   font-family: Lato, Helvetica, Arial, sans-serif;
 }
 
-.site-title {
-  font-weight: bold;
+a.site-title {
   text-decoration: none;
 }
+
+.site-title {
+  font-weight: bold;
+}
+
 .rss img {
   margin-top: 12px;
 }
@@ -21,6 +25,15 @@
   margin-top: 5px;
 }
 
+.site-header .wrapper-content {
+    border-bottom: 1px solid $grey-color-light
+}
+
+.site-footer .wrapper-content {
+    border-top: 1px solid $grey-color-light;
+    padding: $spacing-unit 0;
+}
+
 a:hover {
   color: #1d65c8;
 }
@@ -30,6 +43,10 @@ a:hover {
   border-bottom: 1px dashed;
   border-top: 0px;
   color: #ccdcef
+}
+
+.articles hr:last-of-type {
+  border: 0px;
 }
 
 .highlight pre {

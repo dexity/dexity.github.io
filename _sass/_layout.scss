@@ -1,8 +1,7 @@
 /**
  * Site header
  */
-.site-header {
-    border-bottom: 1px solid $grey-color-light;
+.site-header {;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
@@ -12,7 +11,6 @@
 .site-title {
     font-size: 26px;
     line-height: 56px;
-    letter-spacing: -1px;
     margin-bottom: 0;
     float: left;
 
@@ -91,8 +89,7 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+
 }
 
 .footer-heading {
