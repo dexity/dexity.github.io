@@ -1,5 +1,7 @@
+
 name:   'Surfing Bits'
 url:    'http://www.surfingbits.com'
+email:  'alex@eucaby.com'
 author: 'Alex Dementsov'
 
 include:  ['_pages']

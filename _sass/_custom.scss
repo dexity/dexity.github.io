@@ -1,4 +1,8 @@
 
+a:hover {
+  color: #1d65c8;
+}
+
 .articles hr {
   margin-bottom: 20px;
   border-bottom: 1px dashed;
@@ -27,6 +31,16 @@
   font-weight: bold;
 }
 
+.site-header img {
+  -webkit-border-bottom-right-radius: $header-image-radius;
+     -moz-border-bottom-right-radius: $header-image-radius;
+          border-bottom-right-radius: $header-image-radius;
+  -webkit-border-bottom-left-radius: $header-image-radius;
+     -moz-border-bottom-left-radius: $header-image-radius;
+          border-bottom-left-radius: $header-image-radius;
+}
+
+// Social
 .fb-like {
   position: relative;
   vertical-align: top;
@@ -35,4 +49,11 @@
 .twitter-share-button {
   position: relative;
   vertical-align: middle;
+}
+
+// Bootstrap fixes
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
