@@ -6,11 +6,11 @@ image: metahome-interface/index.png
 blogfeed: true
 ---
 
-> Code: [https://bitbucket.org/dexity/metahome](https://bitbucket.org/dexity/metahome)
-
-Controlling home devices from a single hand held device is a dream that will soon become real. Home devices are getting smarter and include more functionality than devices we have now. I developed a simple prototype of Android application that can manage virtual devices. The idea can be userful both for *Home Automation* to control devices as well as for *Smart Maps* to display detailed information about the objects on the map such as airports or shopping centers.
+Controlling home devices from a single hand held device is a dream that will soon become real. Home devices are getting smarter and include more functionality than devices we have now. I developed a simple prototype of Android application that can manage virtual devices. The idea can be useful both for *Home Automation* to control devices as well as for *Smart Maps* to display detailed information about the objects on the map such as airports or shopping centers.
 
 {{ more }}
+
+> Code: [https://bitbucket.org/dexity/metahome][source-metahome]
 
 ## Application Description
 
@@ -499,3 +499,5 @@ public class MapView extends View {
 ## Real Example
 
 To show the possible application of the idea I present here the map of the Terminal 4 at Los Angeles International Airport (LAX). It looks a bit more complicated than what I showed you before :) .
+
+[source-metahome]: https://bitbucket.org/dexity/metahome

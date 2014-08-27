@@ -5,11 +5,12 @@ tags: python, web service
 blogfeed: true
 ---
 
-> Code: [https://bitbucket.org/dexity/surfsnippets/src/8d3e76f12706/asynchandler](https://bitbucket.org/dexity/surfsnippets/src/8d3e76f12706/asynchandler)
 
 Web applications normally perform various operations behind the scenes which take some time to process such as writing to remote database, logging over network file system or sending emails. Synchronous processing of the slow operations will reduce the responsiveness of the web application and make the user experience not very pleasant. Here I compare two non-blocking approaches using `epoll` and `threading`.
 
 {{ more }}
+
+> Code: [surfsnippets/asynchandler][source-asynchandler]
 
 Suppose there is some operation in our web application which slows it down. The question is how to handle this somewhat independent operation asynchronously without blocking the response. I wrote two simple scripts which demonstrate `epoll` and `threading` and compared the benchmarks for these two approaches. In our case the slow operation is just sleeping for 1 second.
 
@@ -370,3 +371,5 @@ Req/sec	10000	1	12000	3500
 Looking at the table we see that synchronous request handling gives the worst req/sec. The best performance is achieved by asynchronous request handling with epoll. Though in this method the requests are not blocked, there are a few disadvantages: a) the concurrent number of requests is limited by about 130 and b) it normally takes longer to process all the requests. The point a) can be fixed by writing request handler more carefully and reach about 1000 concurrent requests as it is implemented in Tornado. Asynchronous requests with threads gives about 4 times less responsiveness than the method with epoll the all requests are processed much faster and number of concurrent requests can be higher. Performance in asynchronous with epoll method is better than for method without request handling because the later printed the received data in the terminal.
 
 If you need the best performance and don’t care much when the requests get handled then you better go with `Asynchronous Epoll` method. I you want a reasonable performance and do care when the requests get handled then `Asynchronous Threads` will be a better approach. In any case, blocking request handling is not a solution.
+
+[source-asynchandler]: https://bitbucket.org/dexity/surfsnippets/src/8d3e76f12706/asynchandler

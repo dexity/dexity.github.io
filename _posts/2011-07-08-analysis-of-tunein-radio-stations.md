@@ -6,15 +6,16 @@ image: analysis_tunein/index.png
 blogfeed: true
 ---
 
-> Code: [`https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/)
-
-Output: station_lang.json (6.9 Mb), station_genre.json (6.4 Mb)
-
-Recently I was interested in TuneIn ([http://tunein.com](http://tunein.com)) radio service which provides access to radio stations around the globe with a pretty simple REST API: [http://inside.radiotime.com/developers/api/opml](http://inside.radiotime.com/developers/api/opml)
+Recently I was interested in TuneIn ([http://tunein.com](http://tunein.com)) radio service which provides access to radio stations around the globe. In this post I will uncover statistics behind TuneIn radio stations and show how to use the script to do some cool thinks with the TuneIn API.
 
 {{ more }}
 
-I wrote a script [`stationdigger.py`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/stationdigger.py) which traverses tree of links and collects information about the stations. In this post I will uncover statistics behind TuneIn radio stations and show how to use the script to do some cool thinks with the TuneIn API.
+> Code: [surfsnippets/stationdigger][source-stationdigger]
+
+> Output: station_lang.json (6.9 Mb), station_genre.json (6.4 Mb)
+
+
+I wrote a script [`stationdigger.py`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/stationdigger.py) which uses TuneIn API [http://inside.radiotime.com/developers/api/opml](http://inside.radiotime.com/developers/api/opml) by  traversing tree of links and collecting information about the stations.
 
 TuneIn radio API provides both OPML (XML-like) and JSON formats. You don’t have to have any credentials to use this service. But if you start to use the service frequently you will end up getting `403 Forbidden` error. Let’s try to make the first request:
 
@@ -348,3 +349,5 @@ Here are the results I obtained:
 It is no surprise that TuneIn radio service is a US based company so probably they are more biased to English language. English speaking stations comprise `42.7%` of all provided stations. Next popular language, Spanish and Portuguese, have about `10%` each.
 
 Genre distribution is not that narrow as for languages. Majority of stations feature pop genre (Top 40-Pop: `15.4%` and Adult Contemporary: `6.0%`) which is also predictable. Detailed statistics can be found in [`status_lang_sort.txt`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_sort.txt) and [`status_genre_sort.txt`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_genre.txt)
+
+[source-stationdigger]: https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/

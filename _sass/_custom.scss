@@ -1,6 +1,11 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
+blockquote a {
+  font-style: normal;
+  letter-spacing: 0px;
+}
+
 .site-header,
 .site-footer {
   font-family: Lato, Helvetica, Arial, sans-serif;
