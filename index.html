@@ -10,6 +10,9 @@ layout: default
 		{{ post.date | date: "%b %-d, %Y" }} &bull;
 		{% if readtime == '0' %} &lt; 1{% else %}{{ readtime }}{% endif %} min. read &bull;
 		<a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.path | split:'/' | last | cgi_escape }}">Comments</a>
+        {% if post.tags %}
+        Tags: {% for tag in post.tags %} {{ tag }} {% endfor %}
+        {% endif %}
 	</p>
 
 	{% if post.image %}

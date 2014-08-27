@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% capture readtime %}{{ page.content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
+{% capture readtime %}{{ content | number_of_words | plus:91 | divided_by:180.0 | append:'.' | split:'.' | first }}{% endcapture %}
 <div class="post">
   <header class="post-header" style="clear: both">
     <h1 class="post-title">{{ page.title }}</h1>

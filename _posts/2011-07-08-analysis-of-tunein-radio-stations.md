@@ -17,9 +17,7 @@ I wrote a script [`stationdigger.py`](https://bitbucket.org/dexity/surfsnippets/
 
 TuneIn radio API provides both OPML (XML-like) and JSON formats. You don’t have to have any credentials to use this service. But if you start to use the service frequently you will end up getting `403 Forbidden` error. Let’s try to make the first request:
 
-{% highlight text %}
-http://opml.radiotime.com/Browse.ashx
-{% endhighlight %}
+    http://opml.radiotime.com/Browse.ashx
 
 Your response will be in default OPML format:
 
@@ -99,15 +97,11 @@ Parameter `url` holds the link to the station stream which you save on your mach
 
 For example, open the link in the browser:
 
-{% highlight text %}
-http://opml.radiotime.com/Tune.ashx?id=s124197&filter=l1
-{% endhighlight %}
+    http://opml.radiotime.com/Tune.ashx?id=s124197&filter=l1
 
 and in the `Tune.ashx` file you will find station stream which looks something like:
 
-{% highlight text %}
-http://lush.wavestreamer.com:3680/
-{% endhighlight %}
+    http://lush.wavestreamer.com:3680/
 
 Open this link, for example, in `Banshee Media Player` (Media/Open Location) available in Ubuntu as a default media player and enjoy the station :).
 
@@ -146,8 +140,6 @@ The code supports the following features.
 ### Can dig stations both for one and all languages
 
 Because digging stations is a relatively long process, when something happens during the data collection you need a way to restart from some intermediate step. For this purpose the program stores stations in junks: one language in a separate file in a format `lang<number>.json`
-
-
 
 These files are stored in `stations` directory and then later merged with `merge_langs.py` script into a single file: `station_lang.json`. Besides collecting stations for all languages at once you can collect stations just for one language by passing a language tuple.
 
@@ -231,9 +223,7 @@ def make_call(self, url):
 
 To optimize the stream of responses I added header to request encoded content supported by most of the popular web servers and decompress it on the program’s side:
 
-{% highlight text %}
-Accept-Encoding:  gzip
-{% endhighlight %}
+    Accept-Encoding:  gzip
 
 Here is the method which performs decompression:
 {% highlight python linenos %}
@@ -290,11 +280,9 @@ headers = {
 
 Before you start running program it is recommended to set `config.txt` file first:
 
-{% highlight text %}
-[general]
-partnerId =
-serial =
-{% endhighlight %}
+    [general]
+    partnerId =
+    serial =
 
 To collect stations for all languages you need to iterate over sorted languages:
 
@@ -308,11 +296,9 @@ for n in range(len(lang)):
 
 so the session for calls without `partnerId` passed looks like:
 
-{% highlight text %}
-Finished: Aboriginal, total: 2
-Finished: Afrikaans, total: 12
-Waiting 15 --> http://opml.radiotime.com/Browse.ashx?id=g373&filter=l210&render=json
-{% endhighlight %}
+    Finished: Aboriginal, total: 2
+    Finished: Afrikaans, total: 12
+    Waiting 15 --> http://opml.radiotime.com/Browse.ashx?id=g373&filter=l210&render=json
 
 If you want to just dig stations for n-th language then the script will do the work:
 
@@ -332,12 +318,10 @@ Besides implementing `stationdigger.py` I also implemented some useful scripts p
 
 This script merges files with stations by a single language into one file: `station_lang.json`. You need to have language files already generated from stations collections. The file structure should look like:
 
-{% highlight text %}
-stations/
-    lang0.json
-    lang10.json
-    ...
-{% endhighlight %}
+    stations/
+        lang0.json
+        lang10.json
+        ...
 
 ### `lang2genre.py`
 

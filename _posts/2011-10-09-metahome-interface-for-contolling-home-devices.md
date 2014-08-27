@@ -80,12 +80,10 @@ Data model of the application is very simple. It is described by a list of size 
 
 Items indices:
 
-{% highlight text %}
-0 - Restroom
-1 - Telephone
-2 - Elevator
-3 - ATM
-{% endhighlight %}
+    0 - Restroom
+    1 - Telephone
+    2 - Elevator
+    3 - ATM
 
 For example: `["0","-1","-1","2"]`
 
@@ -386,84 +384,70 @@ Here is the interface for the Web Service:
 
 ### Get All Cells
 
-{% highlight text %}
-Example Request:
-http://HOSTNAME/metaservice/index.php?action=getall&key=access_key
+    Example Request:
+    http://HOSTNAME/metaservice/index.php?action=getall&key=access_key
 
-Example Response:
-{
-    "cells": ["2", "3", "-1", "-1"]
-}
-{% endhighlight %}
+    Example Response:
+    {
+        "cells": ["2", "3", "-1", "-1"]
+    }
 
 ### Get Cell
 
-{% highlight text %}
-Example Request:
-http://HOSTNAME/metaservice/index.php?action=get&cell=3&key=access_key
+    Example Request:
+    http://HOSTNAME/metaservice/index.php?action=get&cell=3&key=access_key
 
-Example Response:
-{
-    "cell": 3,
-    "value": 2
-}
-{% endhighlight %}
+    Example Response:
+    {
+        "cell": 3,
+        "value": 2
+    }
 
 ### Remove Cell
 
-{% highlight text %}
-Example Request:
-http://HOSTNAME/metaservice/index.php?action=remove&cell=3&key=access_key
+    Example Request:
+    http://HOSTNAME/metaservice/index.php?action=remove&cell=3&key=access_key
 
-Example Response:
-{
-    "status": "ok"
-}
-{% endhighlight %}
+    Example Response:
+    {
+        "status": "ok"
+    }
 
 ### Set Cell
 
-{% highlight text %}
-Example Request:
-http://HOSTNAME/metaservice/index.php?action=set&cell=3&value=2&key=access_key
+    Example Request:
+    http://HOSTNAME/metaservice/index.php?action=set&cell=3&value=2&key=access_key
 
-Example Response:
-{
-    "status": "ok"
-}
-{% endhighlight %}
+    Example Response:
+    {
+        "status": "ok"
+    }
 
 ### Get Cells Size
 
-{% highlight text %}
-Example Request:
-http://HOSTNAME/metaservice/index.php?action=size&key=access_key
+    Example Request:
+    http://HOSTNAME/metaservice/index.php?action=size&key=access_key
 
-Example Response:
-{
-    "size": 4
-}
-{% endhighlight %}
+    Example Response:
+    {
+        "size": 4
+    }
 
 ### Is Empty
 
-{% highlight text %}
-Example Request:
-http://HOSTNAME/metaservice/index.php?action=empty&cell=3&key=access_key
+    Example Request:
+    http://HOSTNAME/metaservice/index.php?action=empty&cell=3&key=access_key
 
-Example Response:
-{
-    "empty": true
-}
-{% endhighlight %}
+    Example Response:
+    {
+        "empty": true
+    }
 
 If something goes wrong the response returns error:
 
-{% highlight text %}
-{
-    "status": "fail"
-}
-{% endhighlight %}
+    {
+        "status": "fail"
+    }
 
 ## Caching Mechanism and Other Trick
 

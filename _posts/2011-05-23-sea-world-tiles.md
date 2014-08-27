@@ -11,7 +11,7 @@ After hanging out you with my friends from Oregon to the SeaWorld in San Diego, 
 
 So here is the app called [Sea World Tiles](https://market.android.com/details?id=com.surfingbits.shamu). Feel free to download it from Android Market and play around. In this app you need to compose the picture of a sea creature from left and right sides by clicking the appropriate buttons.
 
-The source code is available in the repository [surfsnippets](https://dexity@bitbucket.org/dexity/surfsnippets) in directory **shamu**. Here is the short description of source code to show how simple it is to write Android applications.
+The source code is available in the repository [surfsnippets](https://dexity@bitbucket.org/dexity/surfsnippets) in directory `shamu`. Here is the short description of source code to show how simple it is to write Android applications.
 
 The layout in Android applications is described in .xml file, `main.xml` and includes TableLayout with two TableRow. The upper TableRow displays two tiles of ImageView and the bottom TableRow keeps left and right buttons:
 

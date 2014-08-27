@@ -318,51 +318,49 @@ Now we can do some benchmarks for synchronous, asynchronous with epoll and async
 
 The benchmark result for request handling with epoll will look like the following. Here we get `12345 req/sec`.
 
-{% highlight text %}
-This is ApacheBench, Version 2.3 <$Revision: 655654 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
+    This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+    Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+    Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking localhost (be patient).....done
+    Benchmarking localhost (be patient).....done
 
 
-Server Software:
-Server Hostname:        localhost
-Server Port:            8080
+    Server Software:
+    Server Hostname:        localhost
+    Server Port:            8080
 
-Document Path:          /
-Document Length:        0 bytes
+    Document Path:          /
+    Document Length:        0 bytes
 
-Concurrency Level:      10
-Time taken for tests:   0.008 seconds
-Complete requests:      100
-Failed requests:        0
-Write errors:           0
-Total transferred:      1000 bytes
-HTML transferred:       0 bytes
-Requests per second:    12345.68 [#/sec] (mean)
-Time per request:       0.810 [ms] (mean)
-Time per request:       0.081 [ms] (mean, across all concurrent requests)
-Transfer rate:          120.56 [Kbytes/sec] received
+    Concurrency Level:      10
+    Time taken for tests:   0.008 seconds
+    Complete requests:      100
+    Failed requests:        0
+    Write errors:           0
+    Total transferred:      1000 bytes
+    HTML transferred:       0 bytes
+    Requests per second:    12345.68 [#/sec] (mean)
+    Time per request:       0.810 [ms] (mean)
+    Time per request:       0.081 [ms] (mean, across all concurrent requests)
+    Transfer rate:          120.56 [Kbytes/sec] received
 
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        0    0   0.1      0       1
-Processing:     0    0   0.2      0       1
-Waiting:        0    0   0.1      0       1
-Total:          0    1   0.2      1       1
+    Connection Times (ms)
+                  min  mean[+/-sd] median   max
+    Connect:        0    0   0.1      0       1
+    Processing:     0    0   0.2      0       1
+    Waiting:        0    0   0.1      0       1
+    Total:          0    1   0.2      1       1
 
-Percentage of the requests served within a certain time (ms)
-  50%      1
-  66%      1
-  75%      1
-  80%      1
-  90%      1
-  95%      1
-  98%      1
-  99%      1
- 100%      1 (longest request)
-{% endhighlight %}
+    Percentage of the requests served within a certain time (ms)
+      50%      1
+      66%      1
+      75%      1
+      80%      1
+      90%      1
+      95%      1
+      98%      1
+      99%      1
+     100%      1 (longest request)
 
 Performing similar benchmarks for other scripts we can create the table:
 
