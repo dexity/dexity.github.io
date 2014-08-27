@@ -34,6 +34,13 @@ a.site-title {
     padding: $spacing-unit 0;
 }
 
+.post-image img {
+  max-height: 200px;
+  -webkit-border-radius: $image-radius;
+     -moz-border-radius: $image-radius;
+          border-radius: $image-radius;
+}
+
 a:hover {
   color: #1d65c8;
 }
@@ -69,6 +76,10 @@ a:hover {
   font-weight: bold;
 }
 
+.post-excerpt {
+  margin-bottom: 15px;
+}
+
 .site-header img {
   -webkit-border-bottom-right-radius: $header-image-radius;
      -moz-border-bottom-right-radius: $header-image-radius;
@@ -79,9 +90,9 @@ a:hover {
 }
 
 img.avatar {
-  border-radius: 40px;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
+  -webkit-border-radius: $avatar-image-radius;
+     -moz-border-radius: $avatar-image-radius;
+          border-radius: $avatar-image-radius;
 }
 
 // Pagination

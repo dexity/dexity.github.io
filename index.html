@@ -15,20 +15,24 @@ layout: default
         {% endif %}
 	</p>
 
-	{% if post.image %}
-	<a href="{{ post.url }}" class="post-banner" style="background-image: url(/img/{{ post.image }});">
-		<img src="/img/{{ post.image }}" alt="{{ post.title }}" />
-	</a>
-	{% else %}
-	<!--<a href="{{ post.url }}" class="post-banner no-image">-->
-		<!--<img src="/img/post-banners/no-image.gif" alt="{{ post.title }}" />-->
-	<!--</a>-->
-	{% endif %}
-
-	<p class="post-excerpt">
-        {{ post.excerpt | strip_html }} &nbsp;
-        <a href="{{ post.url }}">Read more</a>
-    </p>
+    <div class="post-excerpt">
+        {% if post.image %}
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{{ post.url }}" class="post-image" style="background-image: url(/img/{{ post.image }});">
+                    <img src="/img/{{ post.image }}" alt="{{ post.title }}" />
+                </a>
+            </div>
+            <div class="col-md-9">
+                {{ post.excerpt | strip_html }} &nbsp;
+                <a href="{{ post.url }}">Read more</a>
+            </div>
+        </div>
+        {% else %}
+            {{ post.excerpt | strip_html }} &nbsp;
+            <a href="{{ post.url }}">Read more</a>
+        {% endif %}
+    </div>
     <hr>
 
 {% endfor %}

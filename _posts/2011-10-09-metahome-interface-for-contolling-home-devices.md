@@ -2,6 +2,7 @@
 layout: post
 title: MetaHome&#58; Interface for Contolling Home Devices
 tags: android, web service
+image: metahome-interface/index.png
 blogfeed: true
 ---
 

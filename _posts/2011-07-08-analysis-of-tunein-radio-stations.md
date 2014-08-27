@@ -2,6 +2,7 @@
 layout: post
 title: Analysis of TuneIn Radio Stations
 tags: python, web service
+image: analysis_tunein/index.png
 blogfeed: true
 ---
 

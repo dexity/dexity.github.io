@@ -2,6 +2,7 @@
 layout: post
 title: Sea World Tiles
 tags: android
+image: sea_world/index.png
 blogfeed: true
 ---
 
