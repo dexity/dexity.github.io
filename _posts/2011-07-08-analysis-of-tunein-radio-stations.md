@@ -14,7 +14,6 @@ Recently I was interested in TuneIn ([http://tunein.com](http://tunein.com)) rad
 
 > Output: station_lang.json (6.9 Mb), station_genre.json (6.4 Mb)
 
-
 I wrote a script [`stationdigger.py`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/stationdigger.py) which uses TuneIn API [http://inside.radiotime.com/developers/api/opml](http://inside.radiotime.com/developers/api/opml) by  traversing tree of links and collecting information about the stations.
 
 TuneIn radio API provides both OPML (XML-like) and JSON formats. You don’t have to have any credentials to use this service. But if you start to use the service frequently you will end up getting `403 Forbidden` error. Let’s try to make the first request:
@@ -350,4 +349,16 @@ It is no surprise that TuneIn radio service is a US based company so probably th
 
 Genre distribution is not that narrow as for languages. Majority of stations feature pop genre (Top 40-Pop: `15.4%` and Adult Contemporary: `6.0%`) which is also predictable. Detailed statistics can be found in [`status_lang_sort.txt`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_sort.txt) and [`status_genre_sort.txt`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_genre.txt)
 
+![Number of Stations by Language][img-lang-pie]
+
+![Number of Stations by Language][img-lang-hist]
+
+![Number of Stations by Genre][img-genre-pie]
+
+![Number of Stations by Genre][img-genre-hist]
+
 [source-stationdigger]: https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/
+[img-lang-pie]: /img/analysis_tunein/status_lang_pie.png
+[img-lang-hist]: /img/analysis_tunein/status_lang_hist.png
+[img-genre-pie]: /img/analysis_tunein/status_genre_pie.png
+[img-genre-hist]: /img/analysis_tunein/status_genre_hist.png

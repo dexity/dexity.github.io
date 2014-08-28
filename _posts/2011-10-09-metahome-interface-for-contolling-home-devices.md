@@ -2,7 +2,7 @@
 layout: post
 title: MetaHome&#58; Interface for Contolling Home Devices
 tags: android, web service
-image: metahome-interface/index.png
+image: metahome_interface/index.png
 blogfeed: true
 ---
 
@@ -11,6 +11,8 @@ Controlling home devices from a single hand held device is a dream that will soo
 {{ more }}
 
 > Code: [https://bitbucket.org/dexity/metahome][source-metahome]
+
+![MetaHome][img-metahome]
 
 ## Application Description
 
@@ -496,8 +498,19 @@ public class MapView extends View {
 }
 {% endhighlight %}
 
+![MetaHome Layout][img-layout]
+
+![MetaHome Select][img-select]
+
 ## Real Example
 
-To show the possible application of the idea I present here the map of the Terminal 4 at Los Angeles International Airport (LAX). It looks a bit more complicated than what I showed you before :) .
+To show the possible application of the idea I present here the map of the Terminal 4 at Los Angeles International Airport (LAX). It looks a bit more complicated than what I showed you before :).
+
+![LAX Terminal 4][img-lax]
 
 [source-metahome]: https://bitbucket.org/dexity/metahome
+[img-metahome]: /img/metahome_interface/index.png
+[img-layout]: /img/metahome_interface/layout.png
+[img-select]: /img/metahome_interface/select.png
+[img-lax]: /img/metahome_interface/lax_terminal_4.png
+
