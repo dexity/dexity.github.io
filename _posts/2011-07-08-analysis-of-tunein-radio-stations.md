@@ -12,7 +12,7 @@ Recently I was interested in TuneIn ([http://tunein.com](http://tunein.com)) rad
 
 > Code: [surfsnippets/stationdigger][source-stationdigger]
 
-> Output: station_lang.json (6.9 Mb), station_genre.json (6.4 Mb)
+> Output: [station_lang.json][file-station-lang] (6.9 Mb), [station_genre.json][file-station-genre] (6.4 Mb)
 
 I wrote a script [`stationdigger.py`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/stationdigger.py) which uses TuneIn API [http://inside.radiotime.com/developers/api/opml](http://inside.radiotime.com/developers/api/opml) by  traversing tree of links and collecting information about the stations.
 
@@ -52,7 +52,7 @@ My script `stationdigger.py` just makes this task automatic and more error prone
 
 ## Results Format
 
-I collected statistics for radio stations arranged by language and genre. The results are stored in files `station_lang.json` (6.9 Mb) and `station_genre.json` (6.4 Mb) in JSON format for stations by language and genre correspondingly.
+I collected statistics for radio stations arranged by language and genre. The results are stored in files [`station_lang.json`][file-station-lang] (6.9 Mb) and [`station_genre.json`][file-station-genre] (6.4 Mb) in JSON format for stations by language and genre correspondingly.
 
 Stations by language has the format:
 
@@ -347,7 +347,7 @@ Here are the results I obtained:
 
 It is no surprise that TuneIn radio service is a US based company so probably they are more biased to English language. English speaking stations comprise `42.7%` of all provided stations. Next popular language, Spanish and Portuguese, have about `10%` each.
 
-Genre distribution is not that narrow as for languages. Majority of stations feature pop genre (Top 40-Pop: `15.4%` and Adult Contemporary: `6.0%`) which is also predictable. Detailed statistics can be found in [`status_lang_sort.txt`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_sort.txt) and [`status_genre_sort.txt`](https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_genre.txt)
+Genre distribution is not that narrow as for languages. Majority of stations feature pop genre (Top 40-Pop: `15.4%` and Adult Contemporary: `6.0%`) which is also predictable. Detailed statistics can be found in [`status_lang_sort.txt`][file-status-lang] and [`status_genre_sort.txt`][file-status-genre].
 
 ![Number of Stations by Language][img-lang-pie]
 
@@ -358,6 +358,10 @@ Genre distribution is not that narrow as for languages. Majority of stations fea
 ![Number of Stations by Genre][img-genre-hist]
 
 [source-stationdigger]: https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/
+[file-station-lang]: http://storage.googleapis.com/surfingbits/station_lang.json
+[file-station-genre]: http://storage.googleapis.com/surfingbits/station_genre.json
+[file-status-lang]: https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_lang_sort.txt
+[file-status-genre]: https://bitbucket.org/dexity/surfsnippets/src/1b6a53d8c3e3/stationdigger/generated/status_genre_sort.txt
 [img-lang-pie]: /img/analysis_tunein/status_lang_pie.png
 [img-lang-hist]: /img/analysis_tunein/status_lang_hist.png
 [img-genre-pie]: /img/analysis_tunein/status_genre_pie.png

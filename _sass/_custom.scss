@@ -116,14 +116,20 @@ img.avatar {
 }
 
 // Social
+.social-buttons {
+  margin-bottom: $base-spacing-unit;
+}
+
 .fb-like {
   position: relative;
   vertical-align: top;
+  margin-top: -2px;
 }
 
 .twitter-share-button {
   position: relative;
   vertical-align: middle;
+  margin-right: -30px;
 }
 
 // Bootstrap fixes
