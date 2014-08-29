@@ -18,12 +18,12 @@ layout: default
     <div class="post-excerpt">
         {% if post.image %}
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <a href="{{ post.url }}" class="post-image" style="background-image: url(/img/{{ post.image }});">
                     <img src="/img/{{ post.image }}" alt="{{ post.title }}" />
                 </a>
             </div>
-            <div class="col-md-9">
+            <div class="col-sm-9">
                 {{ post.excerpt | strip_html }} &nbsp;
                 <a href="{{ post.url }}">Read more</a>
             </div>

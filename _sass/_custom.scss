@@ -27,6 +27,7 @@ a.site-title {
 
 .rss img {
   margin-top: 12px;
+  width: 35px;
 }
 
 .site-info {
@@ -118,6 +119,7 @@ img.avatar {
 // Social
 .social-buttons {
   margin-bottom: $base-spacing-unit;
+  display: inline-block;
 }
 
 .fb-like {
@@ -138,3 +140,17 @@ img.avatar {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+// Phone
+@media (max-width: $screen-xs) {
+
+}
+
+// Tablet
+@media (max-width: $screen-sm) {
+  .post-excerpt img {
+    margin-bottom: $base-spacing-unit;
+  }
+
+}
+
