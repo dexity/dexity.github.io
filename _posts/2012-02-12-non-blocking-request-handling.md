@@ -365,9 +365,14 @@ The benchmark result for request handling with epoll will look like the followin
 
 Performing similar benchmarks for other scripts we can create the table:
 
-No Handling	Synchronous	Asynchronous Epoll	Asynchronous Threads
-Script	nohandling.py	sync.py	async_epoll.py	async_thread.py
-Req/sec	10000	1	12000	3500
+
+| | No Handling | Synchronous	| Asynchronous Epoll | Asynchronous Threads
+|-
+| Script | `nohandling.py` | `sync.py` | `async_epoll.py` | `async_thread.py`
+| Req/sec | 10000 | 1 | 12000 | 3500
+{: class="table table-striped"}
+
+
 Looking at the table we see that synchronous request handling gives the worst req/sec. The best performance is achieved by asynchronous request handling with epoll. Though in this method the requests are not blocked, there are a few disadvantages: a) the concurrent number of requests is limited by about 130 and b) it normally takes longer to process all the requests. The point a) can be fixed by writing request handler more carefully and reach about 1000 concurrent requests as it is implemented in Tornado. Asynchronous requests with threads gives about 4 times less responsiveness than the method with epoll the all requests are processed much faster and number of concurrent requests can be higher. Performance in asynchronous with epoll method is better than for method without request handling because the later printed the received data in the terminal.
 
 If you need the best performance and don’t care much when the requests get handled then you better go with `Asynchronous Epoll` method. I you want a reasonable performance and do care when the requests get handled then `Asynchronous Threads` will be a better approach. In any case, blocking request handling is not a solution.
