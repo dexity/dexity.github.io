@@ -32,8 +32,6 @@ To send request use **Where are you?** button and in the open dialog you can ask
 
 ... and don't forget to pass a message along :).
 
-![Browser][img-browser]
-
 ### Incoming and Outgoing Messages
 
 ![Incoming Messages][img-incoming]
