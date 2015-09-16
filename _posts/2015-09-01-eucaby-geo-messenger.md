@@ -2,6 +2,7 @@
 layout: post
 title: Eucaby&#58; Simple Geo Messenger
 tags: geo, messenger
+image: eucaby_messenger/index.png
 blogfeed: true
 ---
 
