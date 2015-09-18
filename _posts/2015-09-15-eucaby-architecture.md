@@ -38,6 +38,7 @@ Originally I planned to use endpoints.
 Mobile application is implemented with the popular [Ionic][ionic] framework which is one layer on the top of [PhoneGap][phonegap]. It is really easy to use if you get along with AngularJS and allows to generate native code for several mobile platforms out of the box. It supports plugin architecture so you can use pretty much any mobile native functionality with a simple javascript interface. I used a few plugins including [PushPlugin][pushplugin] for receiving push notifications from **GCM** or **APNs** and [Geolocation][geolocation] for accurate geographic location. It is perfect for rapid prototyping and conveying ideas. 
 
 I noticed a few disadvantages building mobile application with Ionic compared to native application:
+
 * Larger memory footprint. PhoneGap runs embedded browser. 
 * Slower. 
 * Quirky. Some interactions look unusual. 
