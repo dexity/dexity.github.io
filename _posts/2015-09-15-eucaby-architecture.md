@@ -24,6 +24,8 @@ Both Eucaby API and Eucaby website are running on Google AppEngine which provide
 
 ### Authentication Flow Diagram
 
+![Eucaby Authentication Flow][img-authentication-flow]
+
 [Facebook Access Tokens][fb-access-tokens]
 
 ## Endpoints
