@@ -44,87 +44,86 @@ I noticed a few disadvantages building mobile application with Ionic compared to
 
 AngularJS module which communicates with Eucaby API application is `EucabyApi`. It uses [OpenFB][openfb] module to authenticate with Facebook OAuth. Mobile application doesn't use Facebook Graph API directly though. Here is the snippet of the code for `EucabyApi` module:
 
-```
-angular.module('eucaby.api', [
-    'openfb',
-    'eucaby.utils',
-    'eucaby.config'
-])
-
-.factory('EucabyApi', [
-    '$http',
-    '$q',
-    'OpenFB',
-    'utils',
-    'storageManager',
-    'config',
-function ($http, $q, OpenFB, utils, storageManager, config) {
-
-    return {
-        init: function(){
-            OpenFB.init(config.FB_APP_ID,
-                        'http://localhost:8100/oauthcallback.html');
-        },
-        login: function(force){
-            var deferred = $q.defer();
-            var accessToken = storageManager.getAccessToken();
-            if (accessToken && !force) {
-                deferred.resolve(accessToken);
-            } else {
+    angular.module('eucaby.api', [
+        'openfb',
+        'eucaby.utils',
+        'eucaby.config'
+    ])
+    
+    .factory('EucabyApi', [
+        '$http',
+        '$q',
+        'OpenFB',
+        'utils',
+        'storageManager',
+        'config',
+    function ($http, $q, OpenFB, utils, storageManager, config) {
+    
+        return {
+            init: function(){
+                OpenFB.init(config.FB_APP_ID,
+                            'http://localhost:8100/oauthcallback.html');
+            },
+            login: function(force){
+                var deferred = $q.defer();
+                var accessToken = storageManager.getAccessToken();
+                if (accessToken && !force) {
+                    deferred.resolve(accessToken);
+                } else {
+                    /*
+                    * Get short-lived Facebook access token
+                    * Get Facebook user profile with '/me' request
+                    * Get Eucaby access token
+                    */
+                    // ...
+    
+                    OpenFB.login('email,user_friends,public_profile')
+                        .then(function(){
+                            // ...
+                        });
+                }
+                return deferred.promise;
+            },
+            api: function(obj){
                 /*
-                * Get short-lived Facebook access token
-                * Get Facebook user profile with '/me' request
-                * Get Eucaby access token
+                * Ensure that Eucaby access token exists
+                * If Eucaby access token is expired refresh it
+                * Make API request
                 */
+            
+                var self = this;
+                var method = obj.method || 'GET';
+                var params = obj.params || {};
+                var data = obj.data && utils.toPostData(obj.data) || '';
+                var deferred = $q.defer();
+                
                 // ...
-
-                OpenFB.login('email,user_friends,public_profile')
-                    .then(function(){
-                        // ...
-                    });
+                
+                var apiRequest = function(method, path, token, params){
+                    return $http({
+                        method: method, url: config.EUCABY_API_ENDPOINT + path,
+                        params: params, data: data,
+                        headers: {'Authorization': 'Bearer ' + token}});
+                };
+                
+                var makeApiRequest = function(data){
+                    // ...
+                    apiRequest(method, obj.path, token, params)
+                        .success(function(data){
+                            deferred.resolve(data);
+                        });
+                };
+    
+                self.login().then(makeApiRequest);
+                return deferred.promise;
+            },
+            logout: function(){
+                // ...
+                OpenFB.logout();
             }
-            return deferred.promise;
-        },
-        api: function(obj){
-            /*
-            * Ensure that Eucaby access token exists
-            * If Eucaby access token is expired refresh it
-            * Make API request
-            */
-        
-            var self = this;
-            var method = obj.method || 'GET';
-            var params = obj.params || {};
-            var data = obj.data && utils.toPostData(obj.data) || '';
-            var deferred = $q.defer();
-            
-            // ...
-            
-            var apiRequest = function(method, path, token, params){
-                return $http({
-                    method: method, url: config.EUCABY_API_ENDPOINT + path,
-                    params: params, data: data,
-                    headers: {'Authorization': 'Bearer ' + token}});
-            };
-            
-            var makeApiRequest = function(data){
-                // ...
-                apiRequest(method, obj.path, token, params)
-                    .success(function(data){
-                        deferred.resolve(data);
-                    });
-            };
+        };
+    }]);
 
-            self.login().then(makeApiRequest);
-            return deferred.promise;
-        },
-        logout: function(){
-            // ...
-            OpenFB.logout();
-        }
-    };
-}]);
-```
 
 # Eucaby Website
 
