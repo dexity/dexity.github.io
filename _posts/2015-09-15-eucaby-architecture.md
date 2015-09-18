@@ -6,13 +6,11 @@ image: eucaby_architecture/index.png
 blogfeed: true
 ---
 
-Eucaby Architecture
+Eucaby consists of three separate applications. The core is Eucaby API which serves messages between users and integrates external web services. Mobile application is the main client which sends and receives user location messages. Eucaby website provides general information and allows to view messages sent to email address.
 
 {{ more }}
 
 ![Eucaby Architecture][img-architecture]
-
-# Mobile Application
 
 # Eucaby API
 
@@ -20,9 +18,13 @@ Eucaby Architecture
 
 ![Eucaby Authentication][img-authentication]
 
+such as friends list, distance between two locations
+
 ## Notification
 
-# Eucaby
+# Mobile Application
+
+# Eucaby Website
 
 [img-index]: /img/eucaby_architecture/index.png
 [img-authentication]: /img/eucaby_architecture/authentication.png
