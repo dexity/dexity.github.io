@@ -12,9 +12,23 @@ Eucaby consists of three separate applications. The core is Eucaby API which ser
 
 ![Eucaby Architecture][img-architecture]
 
-Both Eucaby API and Eucaby website are running on Google AppEngine which provides 
-
 # Eucaby API
+
+## Overview
+
+Eucaby API runs on Google AppEngine which provides scalable infrastructure and essential architecture components for real-time communication. A real-time messaging consists of several steps:
+
+* User sends location message from mobile device (or browser).
+* Message is stored in Cloud Datastore and notification is sent to Task Queue.
+* Notification in Task Queue is processed and sent to push notification service (*GCM* or *APNs*).
+* Notification is delivered to the recipient mobile device.
+
+### Components 
+
+Eucaby API uses three types of storage: `Cloud SQL`, `Cloud Datastore` and `Memcache`. [Cloud SQL][cloudsql] is mostly used to store high integrity data such as user and device data. [Cloud Datastore][datastore], a NoSQL database, stores user messages and locations which don't require high data integrity or complex queries but require high scalability and performance. [Memcache][memcache], a key-value storage, is mostly used to cache data from proxy requests to external services such as *Facebook Graph API* or *Google Maps Distance Matrix API*.
+
+Operations which can be handled outside of the request are precessed in the [Task Queue][taskqueue]. This includes push notifications, email notifications and cron jobs.
+
 
 ## Authentication
 
@@ -30,9 +44,7 @@ Both Eucaby API and Eucaby website are running on Google AppEngine which provide
 
 ## Endpoints
 
-Originally I planned to use endpoints.
-
-## Push Notifications
+Originally I planned to use [Google Endpoints][endpoints] because it is really easy to implement API with. But it has one disadvantage that is hard to get around: all endpoints will start with `/_ah/api` which is no problem for programming interface makes the REST API not very esthetic. One way to solve the issue is to use redirect for every request but I decided to take a different approach and use [Flask Restful][flask-restful] instead. It has all essential features to build API but lacking a bit of validation. 
 
 
 # Mobile Application
@@ -90,7 +102,7 @@ AngularJS module which communicates with Eucaby API application is `EucabyApi`. 
             api: function(obj){
                 /*
                 * Ensure that Eucaby access token exists
-                * If Eucaby access token is expired refresh it
+                * Refresh Eucaby access token if it is expired
                 * Make API request
                 */
             
@@ -136,7 +148,12 @@ Eucaby website application not only displays general information but also allows
 [img-authentication]: /img/eucaby_architecture/authentication.png
 [img-authentication-flow]: /img/eucaby_architecture/authentication-flow.png
 [img-architecture]: /img/eucaby_architecture/architecture.png
+[datastore]: https://cloud.google.com/datastore/
+[cloudsql]: https://cloud.google.com/sql/
+[memcache]: https://cloud.google.com/appengine/docs/python/memcache/
+[taskqueue]: https://cloud.google.com/appengine/docs/python/taskqueue/
 [fb-access-tokens]: https://developers.facebook.com/docs/facebook-login/access-tokens
+[flask-restful]: https://flask-restful.readthedocs.org
 [ionic]: http://ionicframework.com/
 [phonegap]: http://phonegap.com/
 [pushplugin]: https://github.com/phonegap-build/PushPlugin
