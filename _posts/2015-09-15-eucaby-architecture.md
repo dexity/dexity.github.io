@@ -6,7 +6,7 @@ image: eucaby_architecture/index.png
 blogfeed: true
 ---
 
-Eucaby consists of three separate applications. The core is Eucaby API which serves messages between users and integrates external web services. Mobile application is the main client which sends and receives user location messages. Eucaby website provides general information and allows to view messages sent to email address.
+Eucaby consists of three separate applications. The core is *Eucaby API* which serves messages between users and integrates external web services. Mobile application is the main client which sends and receives user location messages. Eucaby website provides general information and allows to view messages sent to email address.
 
 {{ more }}
 
@@ -27,7 +27,70 @@ Eucaby API runs on Google AppEngine which provides scalable infrastructure and e
 
 Eucaby API uses three types of storage: `Cloud SQL`, `Cloud Datastore` and `Memcache`. [Cloud SQL][cloudsql] is mostly used to store high integrity data such as user and device data. [Cloud Datastore][datastore], a NoSQL database, stores user messages and locations which don't require high data integrity or complex queries but require high scalability and performance. [Memcache][memcache], a key-value storage, is mostly used to cache data from proxy requests to external services such as *Facebook Graph API* or *Google Maps Distance Matrix API*.
 
-Operations which can be handled outside of the request are precessed in the [Task Queue][taskqueue]. This includes push notifications, email notifications and cron jobs.
+Operations which can be handled outside of the request are precessed in the [Task Queue][taskqueue]. This includes push notifications, email notifications and cron jobs. Here is the example of notification task to GCM:
+
+    import flask
+    import logging
+    from flask import views
+    from flask import current_app
+    from gcm import gcm
+    from sqlalchemy import exc
+    
+    from eucaby_api import args as api_args
+    from eucaby_api import models
+    from eucaby_api.utils import utils as api_utils
+
+
+    class GCMNotificationsTask(PushNotificationsTask):
+    
+        """Push notifications for GCM."""
+    
+        def post(self):  # pylint: disable=no-self-use
+            res = self.handle_input(api_args.ANDROID)
+            if isinstance(res, flask.Response):
+                return res
+    
+            regs = {}
+            for dev in flask.request.devices:
+                regs[dev.device_key] = dev
+    
+            data = api_utils.gcm_payload_data(
+                flask.request.sender_name, flask.request.message_type,
+                flask.request.message_id)
+            gcm_app = gcm.GCM(current_app.config['GCM_API_KEY'])
+            try:
+                resp = gcm_app.json_request(
+                    registration_ids=regs.keys(), data=data, retries=7)
+            except gcm.GCMException as e:
+                logging.error(
+                    'Failed to push notification. %s: %s',
+                    e.__class__.__name__, e.message)
+                return e.message, 500
+    
+            msg = 'GCM result: {}'.format(str(resp))
+            if 'errors' in resp:
+                for error, reg_ids in resp['errors'].items():
+                    if error in ['NotRegistered', 'InvalidRegistration']:
+                        # Deactivate multiple devices
+                        for reg_id in reg_ids:
+                            regs[reg_id].deactivate()
+    
+            if 'canonical' in resp:
+                for reg_id, canonical_id in resp['canonical'].items():
+                    # Replace registration_id with canonical_id
+                    device = regs[reg_id]
+                    device.device_key = canonical_id
+                    models.db.session.add(device)
+                    try:
+                        # Note: From time to time GCM garbage collects registration
+                        #       ids by issuing a new canonical id which replace
+                        #       other registration ids for the same device. You
+                        #       need to deactivate the devices
+                        models.db.session.commit()
+                    except exc.IntegrityError:
+                        models.db.session.rollback()
+                        device.deactivate()
+            return msg
 
 
 ## Authentication
@@ -46,11 +109,12 @@ Facebook implements non-standard OAuth with two types of access tokens: *short-l
 
 ![Eucaby Authentication][img-authentication]
 
+Every access token has limited lifetime. This equally relates to Facebook short-lived and long-lived and Eucaby access tokens. After access token is expired it has to be either refreshed or created again. Eucaby API takes care of it by automatically refreshing access tokens. 
 
 
 ## Endpoints
 
-Originally I planned to use [Google Endpoints][endpoints] because it is really easy to implement API with. But it has one disadvantage that is hard to get around: all endpoints will start with `/_ah/api` which is no problem for programming interface makes the REST API not very esthetic. One way to solve the issue is to use redirect for every request but I decided to take a different approach and use [Flask Restful][flask-restful] instead. It has all essential features to build API but lacking a bit of validation. 
+Originally I planned to use [Google Endpoints][endpoints] because it is really easy to implement API with. But it has one disadvantage that is hard to get around: all endpoints will start with `/_ah/api` which is no problem for programming interface but makes the REST API not very esthetic. One way to solve the issue is to use redirect for every request but I decided to take a different approach and use [Flask Restful][flask-restful] instead. It has all essential features to build API but lacking a bit of validation. 
 
 
 # Mobile Application
