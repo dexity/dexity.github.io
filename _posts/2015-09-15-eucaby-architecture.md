@@ -10,6 +10,8 @@ Eucaby consists of three separate applications. The core is *Eucaby API* which s
 
 {{ more }}
 
+Before we start feel free to download Eucaby mobile application from Google Play or Apple AppStore and check out the website [www.eucaby.com][eucaby].
+
 ![Eucaby Architecture][img-architecture]
 
 # Eucaby API
@@ -214,6 +216,9 @@ AngularJS module which communicates with Eucaby API application is `EucabyApi`. 
 
 Eucaby website application not only displays general information but also allows users to view or send location message back to the sender. It is implemented in Django and uses some shared resources with Eucaby API.
 
+*I am here*
+
+[eucaby]: https://www.eucaby.com
 [img-index]: /img/eucaby_architecture/index.png
 [img-authentication]: /img/eucaby_architecture/authentication.png
 [img-authentication-flow]: /img/eucaby_architecture/authentication-flow.png

@@ -10,7 +10,7 @@ Messenger is no longer about just sending text. In recent years it turned into a
 
 {{ more }}
 
-Eucaby is a simple Geo Messenger that helps you to share and request accurate and authenticated location messages with your friends. It is a cross-platform mobile application available for Android and iOS. Feel free to check it out at [www.eucaby.com][eucaby]. This post discusses the main Eucaby features.
+Eucaby is a simple Geo Messenger that helps you to share and request accurate and authenticated location messages with your friends. It is a cross-platform mobile application available for Android and iOS. Feel free to download Eucaby mobile application from Google Play or Apple AppStore and check out the website [www.eucaby.com][eucaby]. Here we discuss the main Eucaby features.
 
 ![Eucaby Map][img-map]
 
