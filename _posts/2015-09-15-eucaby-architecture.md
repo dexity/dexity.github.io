@@ -32,15 +32,21 @@ Operations which can be handled outside of the request are precessed in the [Tas
 
 ## Authentication
 
-### Authentication Components
-
-![Eucaby Authentication][img-authentication]
-
 ### Authentication Flow Diagram
 
 ![Eucaby Authentication Flow][img-authentication-flow]
 
-[Facebook Access Tokens][fb-access-tokens]
+Facebook implements non-standard OAuth with two types of access tokens: *short-lived* (`sl_access_token`) and *long-lived* (`ll_access_token`) described in [Facebook Access Tokens][fb-access-tokens]. Eucaby API authentication uses Facebook authentication as follows:
+
+* Request short-lived access token from Facebook using username and password.
+* Exchange short-lived access token for long-lived access token and store it for further *Facebook Graph API* requests.
+* Create Eucaby access token and return it back to mobile device for further Eucaby API requests.
+
+### Authentication Components
+
+![Eucaby Authentication][img-authentication]
+
+
 
 ## Endpoints
 
